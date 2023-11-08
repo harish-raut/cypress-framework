@@ -5,5 +5,6 @@ declare namespace Cypress {
   interface Chainable {
     highLight(): Chainable;
     log(message: string): void;
+    login({ username, password }): void;
   }
 }

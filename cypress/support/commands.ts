@@ -1,4 +1,8 @@
 /// <reference types="cypress" />
+
+import { loginPage } from "../integration/page-objects/loginPage";
+import { clearAndType, click } from "../utils";
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -54,4 +58,13 @@ Cypress.Commands.add(`highLight`, { prevSubject: true }, function (subject) {
 
 Cypress.Commands.overwrite("log", (subject, message) =>
   cy.task("log", message),
+);
+
+const { userNameField, passwordField, loginBtn } = loginPage;
+
+Cypress.Commands.add("login", ({ username, password }) => {
+  clearAndType(userNameField, username);
+  clearAndType(passwordField, password);
+  click(loginBtn);
+}
 );
