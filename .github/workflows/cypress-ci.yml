@@ -16,5 +16,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          run: chmod +x ./devOps/ci.sh ${{matrix.scripts}}
-          shell: bash
+          test: npx cypress run --spec ./cypress/integration/scripts/${{matrix.scripts}} --browser chrome
+        #   run: chmod +x ./devOps/ci.sh ${{matrix.scripts}}
+        #   shell: bash
