@@ -6,16 +6,23 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
       matrix:
-        scripts: [homePageTests.spec.ts, loginTest.spec.ts]
+        containers: [1, 2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          test: npx cypress run --spec ./cypress/integration/scripts/${{matrix.scripts}} --browser chrome
-        #   run: chmod +x ./devOps/ci.sh ${{matrix.scripts}}
-        #   shell: bash
+          record: true
+          command: yarn ts-node devOps/cypress-ci-run.ts
+        env:
+          # the number of containers in the job matrix
+          TOTAL_RUNNERS: 2
+          THIS_RUNNER: ${{ matrix.containers }}
+# CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+# Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   run: chmod +x ./devOps/ci.sh ${{matrix.scripts}}
+#   shell: bash
