@@ -9,6 +9,6 @@ describe("Tests related to login page", () => {
 
     it("validating if user can add product to the cart", () => {
         homePage.addProductToCartByName("Sauce Labs Backpack");
-        cy.get('.shopping_cart_badge').should("be.visible").highLight().and("have.text", 1);
+        cy.get('.shopping_cart_badge').should("be.visible").highLight().and("have.text", 2);
     });
 });

@@ -19,5 +19,17 @@ jobs:
         # here we have 2 files and 2 conatainers
         # each container will run 1 file
         # thats why command is hardcoded with 2
-        # in order for the logic to work conatainer
+        # in order for the logic to work no of conatainer value should be same as the hardcoded value i.e.2 here
         run: npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome
+      - uses: actions/upload-artifact@v3
+        # add the line below to store screenshots only on failures
+        # if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
+      - uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
