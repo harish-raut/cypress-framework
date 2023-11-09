@@ -15,4 +15,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          commad: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
+          run: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
