@@ -16,7 +16,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           record: true
-          command: yarn ts-node devOps/cypress-ci-run.ts
+          command: npx ts-node devOps/cypress-ci-run.ts
         env:
           # the number of containers in the job matrix
           TOTAL_RUNNERS: 2
