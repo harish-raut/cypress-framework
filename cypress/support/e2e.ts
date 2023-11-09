@@ -18,5 +18,6 @@ import "./commands";
 import "cypress-if";
 import "cypress-each";
 import "cypress-recurse";
+require('@shelex/cypress-allure-plugin');
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

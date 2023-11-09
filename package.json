@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.0",
     "globby": "^13.2.2",
     "ts-node": "^10.9.1"
   }
