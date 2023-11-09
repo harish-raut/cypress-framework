@@ -14,22 +14,10 @@ jobs:
       - name: Install Packages
         run: npm install
       - name: Run Tests
-        run: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
-# name: Cypress Tests
-
-# on: push
-
-# jobs:
-#   cypress-run:
-#     runs-on: ubuntu-22.04
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         containers: [1, 2]
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-#       - name: Cypress run
-#         uses: cypress-io/github-action@v6
-#         with:
-#           run: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
+        # if we have 4 files inside scripts and containers are 2
+        # each container will execute 2 files
+        # here we have 2 files and 2 conatainers
+        # each container will run 1 file
+        # thats why command is hardcoded with 2
+        # in order for the logic to work conatainer
+        run: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 2) --browser chrome
