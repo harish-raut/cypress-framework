@@ -20,4 +20,4 @@ jobs:
         # each container will run 1 file
         # thats why command is hardcoded with 2
         # in order for the logic to work conatainer
-        run: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 2) --browser chrome
+        run: npx cypress run --spec $(node devOps/cypress-parallel.ts ${{ matrix.containers }} 2) --browser chrome
