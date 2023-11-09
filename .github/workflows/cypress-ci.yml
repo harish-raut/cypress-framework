@@ -6,7 +6,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     strategy:
-      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
       matrix:
         containers: [1, 2]
     steps:
@@ -15,10 +15,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          record: true
           commad: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
-# CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-# Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#   run: chmod +x ./devOps/ci.sh ${{matrix.scripts}}
-#   shell: bash
