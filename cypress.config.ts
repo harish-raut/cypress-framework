@@ -13,6 +13,7 @@ export default defineConfig({
   video: true,
   trashAssetsBeforeRuns: true,
   downloadsFolder: "cypress/testdownloads",
+  experimentalWebKitSupport: true,
   e2e: {
     setupNodeEvents(on, config) {
       return require("./cypress/plugins/index.ts")(on, config);

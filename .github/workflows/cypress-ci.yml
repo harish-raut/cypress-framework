@@ -16,11 +16,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           record: true
-          command: npx ts-node devOps/cypress-ci-run.ts
-        env:
-          # the number of containers in the job matrix
-          TOTAL_RUNNERS: 2
-          THIS_RUNNER: ${{ matrix.containers }}
+          commad: npx cypress run --spec $(ts-node devOps/cypress-parallel.ts ${{ matrix.containers }} 1) --browser chrome
 # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
