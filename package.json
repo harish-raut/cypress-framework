@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "globby": "^13.2.2"
+    "globby": "^13.2.2",
+    "ts-node": "^10.9.1"
   }
 }
