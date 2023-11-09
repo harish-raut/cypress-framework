@@ -29,7 +29,7 @@ function getArgs() {
     try {
         const { totalRunners, thisRunner } = getArgs();
 
-        const command = `npx cypress run --spec "$(npx --silent ts-node --quiet devOps/cypress-spec-split.ts ${totalRunners} ${thisRunner})"`;
+        const command = `npx cypress run --spec "$(npx --silent ts-node devOps/cypress-spec-split.ts ${totalRunners} ${thisRunner})"`;
 
         console.log(`Running: ${command}`);
 
